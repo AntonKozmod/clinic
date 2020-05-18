@@ -1,0 +1,268 @@
+body {
+	/*background: #2cc0d3; */
+	font-family: Tahoma;
+	font-size: 100%;
+	margin: 0; /* Убираем отступы */
+}
+
+header, main, footer { 
+	min-width: 855px; 
+}
+
+/*ссылки*/
+a {
+	text-decoration: none;
+	color: black;
+}
+a:hover { /* псевдокласс для подчеркивания при наведении*/
+	text-decoration: underline;
+	color: #2cc0d3;
+}
+
+h3, h4 {
+	font-family: Ubuntu;
+	font-size: 120%;
+}
+h2 {
+	font-size:25px;
+	padding: 20px;
+	color: #2abed1;
+}
+.image h2 {
+	font-size:25px;
+	padding: 20px;
+	color: #ffffff;
+}
+h3 {
+	padding-left: 20px;
+}
+
+header { 
+	background: white; 
+	overflow: auto;
+	padding: 10px; 
+}
+header img {
+	float: left;
+	padding-left: 100px;
+}
+header h1 {
+	float: left;
+	width: 650px;
+	font-size: 300%;
+	font-style: italic;
+	padding-top: 25px;
+	text-align: left;
+	padding-left: 75px;
+}
+header nav {
+	float: right;
+	width: 300px;
+	padding-top: 50px;
+	padding-right: 100px;
+}
+
+.block_menu {  
+    margin-right : 0.1%;
+    width: 100%;
+    float:left;
+    background: #2cc0d3;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+main { 
+	width: 100%;
+    /*float:left;*/
+	background: white; 
+	overflow: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+main h3 {
+	margin-top: 10px;
+	margin-bottom: 5px;	
+}
+main .container { 
+	max-width: 1000px;
+	margin: auto;
+}
+main .main_page_info {
+	float: left;
+}
+main .top-main {
+	max-width: 1125px;
+	margin: 0 auto; /* по центу */
+	padding-bottom: 15px;
+	line-height: 1.5;
+}
+main .top-main h2, h3 {
+	color: #2abed1;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+main .left-main { 
+	margin-top: 15px;
+	border-right: solid 1px #2cc0d3;
+	width: 49%;
+	float:left;
+}
+main .right-main {
+	margin-top: 15px;
+	width: 50%;
+	float:right;	
+}
+main .map1 {
+	margin-top: 15px;
+	width: 60%;
+	float:right;
+}
+.map2 {
+	position:relative;
+	padding-bottom: 10px;
+	max-width: 1000px;
+	margin: auto; /* по центу */
+}
+
+ul.content_block_main li {
+    display: inline; /* Отображать как строчный элемент */
+    list-style-type: none;
+    padding-left: 8%; 
+}
+ul.content_block_main li a {
+	color: #F2F1EF;
+}
+ul.content_block_main li a:hover {
+	text-decoration: underline;
+}
+
+/* для слайдшоу */
+.image ul, .image li {
+	padding-left: 0;
+	list-style-type: none;
+}    
+/*----------Затемнение-----------*/
+.blackout {
+	width: 100%;
+	top: 690px;
+	height: 180px;
+	position: absolute;
+	background: #2cc0d3;
+	color: #F2F1EF;
+	opacity: 0.8;
+}
+/*кнопки*/
+.right_btn1_2 {
+	right: 1%;
+	font-size: 24px;
+	text-align: right;      
+}
+.left_btn1_2 {
+	left: 1%;  
+	float: left;
+	text-align: left;    
+}
+.right_btn1_2, .left_btn1_2 {
+	position: absolute;
+	background: #2cc0d3;
+	padding: 14px 16px;
+	font-size: 24px;
+	opacity: 0.4;
+	color: black;
+	outline: none; /*убирает выделение синего цвета при нажатии на кнопку*/
+	cursor: pointer;
+	border: none;
+	border-radius: 55px;
+	margin-top:360px; 
+}
+button.right_btn1_2:hover, button.left_btn1_2:hover {
+	opacity: 1;
+	color: #1f93ff;
+}
+.image li:hover button {
+	opacity: 1;
+	transition: opacity .5s;
+}
+.image li:not(:hover) button {
+	opacity: 0;
+	transition: opacity .5s;
+}
+/*-----*/
+
+/* footer */
+ul {
+	list-style: circle;
+	list-style-position: inside;
+}
+footer {
+	background: #2cc0d3; 
+	overflow: auto;
+	padding: 10px;
+	color: #F2F1EF;
+	line-height: 1.5;
+}
+footer a {
+	color:#F2F1EF;
+}
+footer a:hover {
+	text-decoration: underline;
+	color:#F2F1EF;
+}
+footer .contact {
+	float: left;
+	width: 570px;
+	padding-left: 100px;
+}
+footer .sitemap {
+	float: right;	
+	width: 285px;
+	padding-right: 100px;
+}
+
+.tabs a span {
+	display: inline-block; 
+	border-radius: 5px 5px 0 0; 
+	width: 120px; 
+	margin-right: 10px; 
+	text-align: center; 
+	background: #ccc; 
+	padding: 5px;
+}
+.tabs a span.active { 
+	background: #ddd; 
+}
+
+.content {
+	background: white;
+	padding-bottom: 10px;
+}
+.content li{
+	list-style: none;
+	margin:  10px;
+	padding-left: 5px;
+	box-shadow: 0 0 0 10px #ddd;
+}
+.content input {
+	width: 85%;
+	height: 36px;
+	margin: 10px;
+	font-family: Jura;
+	text-align: justify;
+	font-size:  24px;
+	box-shadow: 0 0 0 10px #ddd;
+}
+.content button {
+	height: 40px;
+	width: 11%;
+	min-width: 90px;
+	font-size: 16px;
+	margin:10px;
+	font-family: Ubuntu;
+	background: white;
+	box-shadow: 0 -3px 0 11px #ddd;
+}
+
+
+/* Дополнения для faq.html */
+
+/*----*/
