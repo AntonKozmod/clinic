@@ -16,8 +16,8 @@
 			<div class="container">
 				<h1> Стоматология "Улыбочку!"</h1> 
 				<nav> 
-					<a href="#">Войти</a> |
-					<a href="#">Зарегистрироваться</a>
+					<a href="#login_window">Войти</a> |
+					<a href="#register_window">Зарегистрироваться</a>
 				</nav>
 			</div>
 		</header>
@@ -25,8 +25,8 @@
 	<div class="block_menu">
       	<ul class="content_block_main">
             <li><a href="index.html">Главная</a></li>
-            <li><a href="#">О клинике</a></li>
-            <li><a href="#">Услуги и цены</a></li>
+            <li><a href="about.html">О клинике</a></li>
+            <li><a href="prices.html">Услуги и цены</a></li>
             <li><a href="faq.html">Вопросы и Ответы</a></li>
             <li><a href="vacancy.html">Вакансии</a></li>
             <li><a href="contacts.html">Контакты</a></li>
@@ -53,19 +53,74 @@
 		</div>
 		<main>
 			<div class="top-main">
-				<h2>Стоматология в Казани</h2>
+				<h2>СТОМАТОЛОГИЯ В КАЗАНИ</h2>
 				<p>
 					Центр стоматологии более 15 лет заботится о здоровье жителей Казани, оказывая стоматологическую помощь по всем направленям - от профилактики заболеваний и десен и до хирургического протезирования и костно-пластических операций с применением новейшего оборудовани и материалов
 				</p>
 				<div class="left-main">
-					<h3>Специалисты - гордость клиники</h3>
+					<h3>СПЕЦИАЛИСТЫ - ГОРДОСТЬ КЛИНИКИ</h3>
 					Командная работа сопряжена с комфортом пациента: на одной консультации Вы можете получить заключение сразу нескольких специалистов. В Вашем распоряжении стоматолог-терапевт, стоматолог-терапевт детский, стоматологи-хирурги, стоматолог-пародонтолог, стоматолог-ортопед.
 				</div>
 				<div class="right-main">
-					<h3>Установки марки A-DEC</h3>
+					<h3>УСТАНОВКИ МАРКИ A-DEC</h3>
 					Мы рады предложить пациентам высокотехнологичные удобные стоматологические установки марки A-DEC, в которых пациенту будет комфортно находиться сидя или лежа во время лечения, что особенно удобно в случае длительного приема.
 				</div>
 			</div>
+			<!--Всплывающее окно входа-->
+	    			<div id="login_window">
+				    	<div id="okno_login">
+				        	<h2 class="h2_request">
+				        		Введите данные для входа
+				        	</h2>
+				        	<div class="form_request">
+				        		<p>Вы можете войти в систему,<br>заполнив данную форму:</p>
+				        		<input type="login" name="login" placeholder="Логин">
+				        		<input type="password" name="password" placeholder="Пароль">
+				        	</div>
+					        <a href="#" class="close">Закрыть окно</a>
+					        <a href="#" class="submit">Войти</a> <!--Пока что тоже только закрывает-->
+				      	</div>
+				    </div>
+				<!---->
+				<!--Всплывающее окно регистрации-->
+	    			<div id="register_window">
+				    	<div id="okno_register">
+				        	<h2 class="h2_register">
+				        		Введите данные для регистрации
+				        	</h2>
+				        	<div class="form_request">
+				        		<p>Вы можете зарегистрироваться в системе, заполнив данную форму:</p>
+				        		<div class="inputbox_register_left">
+				        			<label for="date">Введите свое полное имя:</label>
+				        			<input type="full_name" name="Фамилия Имя Отчество" placeholder="Фамилия Имя Отчество">
+				        		</div>
+				        		<div class="inputbox_register_right">
+				        			<label for="date">Дата рождения:</label>
+				        			<input type="date" name="date" placeholder="Дата рождения">
+				        		</div>
+				        		<div class="inputbox_register_left">
+				        			<label for="tel">Номер телефона:</label>
+				        			<input type="tel" name="Номер телефона" placeholder="+7 (999) 999-99-99">
+				        		</div>
+				        		<div class="inputbox_register_right">
+				        			<label for="email">Электронная почта:</label>
+				        			<input type="email" name="Электронная почти" placeholder="name@email.com">
+				        		</div>
+				        		<div class="inputbox_register_left">
+				        			<label for="password">Придумайте пароль:</label>
+				        			<input type="password" name="password" placeholder="*********">
+				        		</div>
+				        		<div class="inputbox_register_right">
+				        			<label for="password">Повторите пароль:</label>
+				        			<input type="password" name="repeat_password" placeholder="*********">
+				        		</div>
+				        		
+				        	</div>
+					        <a href="#" class="submit">Зарегистрироваться</a> <!--Пока что тоже только закрывает-->
+					        <a href="#" class="close_register">Закрыть окно</a>
+				      	</div>
+				    </div>
+				<!---->
 		</main>
 		<footer>
 			<div class="container">
@@ -78,8 +133,8 @@
 				<div class="sitemap"> 
 					<ul>
 						<li><a href="index.html">Главная</a></li>
-						<li><a href="#">О клинике</a></li>
-						<li><a href="#">Услуги и цены</a></li>
+						<li><a href="about.html">О клинике</a></li>
+						<li><a href="prices.html">Услуги и цены</a></li>
 						<li><a href="faq.html">Вопросы и Ответы</a></li>
 						<li><a href="vacancy.html">Вакансии</a></li>
 						<li><a href="contacts.html">Контакты</a></li>

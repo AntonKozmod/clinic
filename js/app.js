@@ -53,3 +53,31 @@ function bck()
    image.src = arr_img[current];
 }
 /*----------------------------------------------------------------------*/
+
+/*---------Проверка комбинаций символов при вводе пароля----------------*/
+$("input[type='password']").keyup(function() {
+var password_1 = $("input[name='client-password_1']").val();
+var password_2 = $("input[name='client-password_2']").val();
+if (password_1 != password_2 && password_1 != "" && password_2 != "") {
+if (!$("div").is(".password_2 div:nth-child(3)")) {
+$(".password_2")
+.append('<div>Пароли не совпадают</div>');
+}
+else {
+var text = $(".password_2 div:nth-child(3)").text();
+if (text == "") {
+$(".password_2 div:nth-child(3)")
+.text('Пароли не совпадают');
+}
+}
+$("input[name='client-password_2']")
+.css("background", "#ffcab2");
+}
+else {
+$(".password_2 div:nth-child(3)")
+.empty();
+$("input[name='client-password_2']")
+.css("background", "#fdfadc");
+}
+});
+/*----------------------------------------------------------------------*/

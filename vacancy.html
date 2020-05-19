@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head> 
-		<title> Стоматология "Улыбочку"</title>
+		<title> Вакансии</title>
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"> 
 		<link rel="stylesheet" type="text/css" href="css/reset.css"> 
 		<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -16,23 +16,132 @@
 			<div class="container">
 				<h1> Стоматология "Улыбочку!"</h1> 
 				<nav> 
-					<a href="#">Войти</a> |
-					<a href="#">Зарегистрироваться</a>
+					<a href="#login_window">Войти</a> |
+					<a href="#register_window">Зарегистрироваться</a>
+					
 				</nav>
 			</div>
 		</header>
 		<div class="block_menu">
         	<ul class="content_block_main">
             	<li><a href="index.html">Главная</a></li>
-            	<li><a href="#">О клинике</a></li>
-            	<li><a href="#">Услуги и цены</a></li>
+            	<li><a href="about.html">О клинике</a></li>
+            	<li><a href="prices.html">Услуги и цены</a></li>
             	<li><a href="faq.html">Вопросы и Ответы</a></li>
             	<li><a href="vacancy.html">Вакансии</a></li>
             	<li><a href="contacts.html">Контакты</a></li>
         	</ul>
     	</div>
     	<main>
-    		<h2>В разработке</h2>
+    		<div class="container">
+    			<h2 align="center">ВАКАНСИИ</h2>
+    			<div class="vacancy-left">
+    				<h3>ДЕТСКИЙ СТОМАТОЛОГ</h3>
+    				<p>
+    					Вы можете быть молоды, а можете иметь за плечами серьезный стоматологический стаж. В любом случае нам важно, чтобы у вас был действующий сертификат по ДЕТСКОЙ СТОМАТОЛОГИИ. 
+    					<br><br>
+						Нам важно, чтобы вы любили детей, а также умели общаться с их родителями; не ленились объяснять и рассказывать, и конечно, очень ответственно относились к своим обязанностям.
+						<br><br>
+						Требования:  Вы должны уметь оказать квалифицированную стоматологическую терапевтическую помощь на современном уровне в соответствии с квалификацией и действующими Протоколами ведения пациентов.
+						<br><br>
+						Условия:  График работы: 1-я смена с 8:00 до 14:00, 2-я смена с 14:00 до 20:00. Возможно оформление по совместительству.
+    				</p>
+    				<a href="#zatemnenie" class="button_request">Оставить заявку</a>
+    			</div>
+    			<div class="vacancy-right">
+    				<h3>СТОМАТОЛОГ-ОРТОПЕД</h3>
+    				<p>
+    					Если у вас есть действующий сертификат по ОРТОПЕДИЧЕСКОЙ СТОМАТОЛОГИИ, если вы неравнодушны и аккуратны, если можете оказать квалифицированную ортопедическую помощь в соответствии с квалификацией и действующими Протоколами, если интересуетесь новинками  в области ортопедии и открыты новому, мы ищем именно вас!
+    					<br><br>
+						Если опыт пока небольшой, у нас есть прекрасные наставники, которые передадут вам свои знания и практические навыки. Но любовь к профессии  - обязательна.
+						<br><br>
+						Условия:  График работы: 1-я смена: с 8:00 до 14:00, 2-я смена: с 14:00 до 20:00, Возможно оформление по совместительству.
+    				</p>
+    				<a href="#zatemnenie" class="button_request">Оставить заявку</a>
+    			</div>
+    			<div class="vacancy-left">
+    				<h3>МЕДИЦИНСКАЯ СЕСТРА</h3>
+    				<p>
+    					У вас обязательно должно быть медицинское образование и действующий сертификат. Вы должны хорошо знать СанПиН и иметь мед. книжку. Опыт работы, безусловно, приветствуется. Также  мы ждем от вас собранности, исполнительности и аккуратности, так как вы будете не только работать с врачом, но и вести мед. документацию.
+    					<br><br>
+    					Условия:  График работы: 1-я смена: с 8:00 до 14:00. 2-я смена с 14:00 до 20:00. Возможно оформление по совместительству
+    				</p>
+    				<a href="#zatemnenie" class="button_request">Оставить заявку</a>
+    			</div>
+    		</div>
+    		<!--Всплывающее окно заявки-->
+	    			<div id="zatemnenie">
+				    	<div id="okno">
+				        	<h2 class="h2_request">
+				        		Введите данные для отправки
+				        	</h2>
+				        	<div class="form_request">
+				        		<p>Вы можете откликнуться на вакансию,<br>заполнив данную форму:</p>
+				        		<input type="full_name" name="Фамилия Имя Отчество" placeholder="Фамилия Имя Отчество">
+				        		<input type="vacancy_title" name="Интересующая вакансия" placeholder="Интересующая вакансия">
+				        		<label for="tel">Номер телефона:</label>
+				        		<input type="tel" name="Номер телефона" placeholder="+7 (999) 999-99-99">
+				        	</div>
+					        <a href="#" class="close">Закрыть окно</a>
+					        <a href="#" class="submit">Откликнуться</a> <!--Пока что тоже только закрывает-->
+				      	</div>
+				    </div>
+				<!---->
+				<!--Всплывающее окно входа-->
+	    			<div id="login_window">
+				    	<div id="okno_login">
+				        	<h2 class="h2_request">
+				        		Введите данные для входа
+				        	</h2>
+				        	<div class="form_request">
+				        		<p>Вы можете войти в систему,<br>заполнив данную форму:</p>
+				        		<input type="login" name="login" placeholder="Логин">
+				        		<input type="password" name="password" placeholder="Пароль">
+				        	</div>
+					        <a href="#" class="close">Закрыть окно</a>
+					        <a href="#" class="submit">Войти</a> <!--Пока что тоже только закрывает-->
+				      	</div>
+				    </div>
+				<!---->
+				<!--Всплывающее окно регистрации-->
+	    			<div id="register_window">
+				    	<div id="okno_register">
+				        	<h2 class="h2_register">
+				        		Введите данные для регистрации
+				        	</h2>
+				        	<div class="form_request">
+				        		<p>Вы можете зарегистрироваться в системе, заполнив данную форму:</p>
+				        		<div class="inputbox_register_left">
+				        			<label for="date">Введите свое полное имя:</label>
+				        			<input type="full_name" name="Фамилия Имя Отчество" placeholder="Фамилия Имя Отчество">
+				        		</div>
+				        		<div class="inputbox_register_right">
+				        			<label for="date">Дата рождения:</label>
+				        			<input type="date" name="date" placeholder="Дата рождения">
+				        		</div>
+				        		<div class="inputbox_register_left">
+				        			<label for="tel">Номер телефона:</label>
+				        			<input type="tel" name="Номер телефона" placeholder="+7 (999) 999-99-99">
+				        		</div>
+				        		<div class="inputbox_register_right">
+				        			<label for="email">Электронная почта:</label>
+				        			<input type="email" name="Электронная почти" placeholder="name@email.com">
+				        		</div>
+				        		<div class="inputbox_register_left">
+				        			<label for="password">Придумайте пароль:</label>
+				        			<input type="password" name="password" placeholder="*********">
+				        		</div>
+				        		<div class="inputbox_register_right">
+				        			<label for="password">Повторите пароль:</label>
+				        			<input type="password" name="repeat_password" placeholder="*********">
+				        		</div>
+				        		
+				        	</div>
+					        <a href="#" class="submit">Зарегистрироваться</a> <!--Пока что тоже только закрывает-->
+					        <a href="#" class="close_register">Закрыть окно</a>
+				      	</div>
+				    </div>
+				<!---->
     	</main>
 		<footer>
 			<div class="container">
@@ -45,8 +154,8 @@
 				<div class="sitemap"> 
 					<ul>
 						<li><a href="index.html">Главная</a></li>
-						<li><a href="#">О клинике</a></li>
-						<li><a href="#">Услуги и цены</a></li>
+						<li><a href="about.html">О клинике</a></li>
+						<li><a href="prices.html">Услуги и цены</a></li>
 						<li><a href="faq.html">Вопросы и Ответы</a></li>
 						<li><a href="vacancy.html">Вакансии</a></li>
 						<li><a href="contacts.html">Контакты</a></li>

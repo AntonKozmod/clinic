@@ -15,16 +15,16 @@
       <div class="container">
         <h1> Стоматология "Улыбочку!"</h1> 
         <nav> 
-          <a href="#">Войти</a> |
-          <a href="#">Зарегистрироваться</a>
+          	<a href="#login_window">Войти</a> |
+			<a href="#register_window">Зарегистрироваться</a>
         </nav>
       </div>
     </header>
     <div class="block_menu">
         <ul class="content_block_main">
             <li><a href="index.html">Главная</a></li>
-            <li><a href="#">О клинике</a></li>
-            <li><a href="#">Услуги и цены</a></li>
+            <li><a href="about.html">О клинике</a></li>
+            <li><a href="prices.html">Услуги и цены</a></li>
             <li><a href="faq.html">Вопросы и Ответы</a></li>
             <li><a href="vacancy.html">Вакансии</a></li>
             <li><a href="contacts.html">Контакты</a></li>
@@ -34,7 +34,7 @@
     <main>
       <div class="container">
         <div class="main_page_info">
-          <h2 class='header'> КОНТАКТЫ</h2>
+          <h2 class='header'>КОНТАКТЫ</h2>
           <h3>КОНТАКТЫ</h3> 
           <p> Адрес: г. Казань, ул. Большая Красная, 55</p>
           <p> Телефон: (8800) 555-35-35</p>
@@ -55,6 +55,61 @@
           <iframe src="https://yandex.ru/map-widget/v1/-/CCQ44DS3WA" width="100%" height="400" frameborder="1" allowfullscreen="true" style="position: relative;"> </iframe>
         </div>
       </div>
+      <!--Всплывающее окно входа-->
+	    			<div id="login_window">
+				    	<div id="okno_login">
+				        	<h2 class="h2_request">
+				        		Введите данные для входа
+				        	</h2>
+				        	<div class="form_request">
+				        		<p>Вы можете войти в систему,<br>заполнив данную форму:</p>
+				        		<input type="login" name="login" placeholder="Логин">
+				        		<input type="password" name="password" placeholder="Пароль">
+				        	</div>
+					        <a href="#" class="close">Закрыть окно</a>
+					        <a href="#" class="submit">Войти</a> <!--Пока что тоже только закрывает-->
+				      	</div>
+				    </div>
+				<!---->
+				<!--Всплывающее окно регистрации-->
+	    			<div id="register_window">
+				    	<div id="okno_register">
+				        	<h2 class="h2_register">
+				        		Введите данные для регистрации
+				        	</h2>
+				        	<div class="form_request">
+				        		<p>Вы можете зарегистрироваться в системе, заполнив данную форму:</p>
+				        		<div class="inputbox_register_left">
+				        			<label for="date">Введите свое полное имя:</label>
+				        			<input type="full_name" name="Фамилия Имя Отчество" placeholder="Фамилия Имя Отчество">
+				        		</div>
+				        		<div class="inputbox_register_right">
+				        			<label for="date">Дата рождения:</label>
+				        			<input type="date" name="date" placeholder="Дата рождения">
+				        		</div>
+				        		<div class="inputbox_register_left">
+				        			<label for="tel">Номер телефона:</label>
+				        			<input type="tel" name="Номер телефона" placeholder="+7 (999) 999-99-99">
+				        		</div>
+				        		<div class="inputbox_register_right">
+				        			<label for="email">Электронная почта:</label>
+				        			<input type="email" name="Электронная почти" placeholder="name@email.com">
+				        		</div>
+				        		<div class="inputbox_register_left">
+				        			<label for="password">Придумайте пароль:</label>
+				        			<input type="password" name="password" placeholder="*********">
+				        		</div>
+				        		<div class="inputbox_register_right">
+				        			<label for="password">Повторите пароль:</label>
+				        			<input type="password" name="repeat_password" placeholder="*********">
+				        		</div>
+				        		
+				        	</div>
+					        <a href="#" class="submit">Зарегистрироваться</a> <!--Пока что тоже только закрывает-->
+					        <a href="#" class="close_register">Закрыть окно</a>
+				      	</div>
+				    </div>
+				<!---->
     </main>
     <div class="map2">
         <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A8e5fdc146eacc455c6b6556b5a8d1cef29778a12a9ec467da84af333a036621f&amp;width=100%&amp;height=320&amp;lang=ru_RU&amp;scroll=false"></script>
@@ -70,8 +125,8 @@
         <div class="sitemap"> 
           <ul>
             <li><a href="index.html">Главная</a></li>
-            <li><a href="#">О клинике</a></li>
-            <li><a href="#">Услуги и цены</a></li>
+            <li><a href="about.html">О клинике</a></li>
+            <li><a href="prices.html">Услуги и цены</a></li>
             <li><a href="faq.html">Вопросы и Ответы</a></li>
             <li><a href="vacancy.html">Вакансии</a></li>
             <li><a href="contacts.html">Контакты</a></li>
