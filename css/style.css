@@ -110,13 +110,13 @@ main .top-main h2, h3 {
 main .left-main { 
 	margin-top: 15px;
 	border-right: solid 1px #2cc0d3;
-	width: 49%;
+	width: 50%;
 	float:left;
 	/*padding-bottom: 10px;*/
 }
 main .right-main {
 	margin-top: 15px;
-	width: 50%;
+	width: 49%;
 	float:right;	
 }
 main .map1 {
