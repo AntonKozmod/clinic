@@ -60,11 +60,11 @@ UsersController.create = function(req, res) {
             console.log("Пользователь уже существует"); 
         } else {
             var newUser = new User({
-                "username": username, 
-    			"date_of_birth": date_of_birth,
-    			"phone": phone,
-    			"email": email,
-    			"password": password
+              "username": username, 
+    			    "date_of_birth": date_of_birth,
+    		      "phone": phone,
+    		      "email": email,
+    		      "password": password
             });
             newUser.save(function(err, result) {
                 console.log(err); 
