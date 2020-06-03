@@ -14,10 +14,23 @@ UsersController.index = function(req, res) {
   });
 };
 
+UsersController.login = function(req, res) {
+  console.log('Вызвано действие: login - получить пользователя по логину и паролю');
+  User.find({'email': req.body.email, 'password': req.body.password}, function(err, result) {
+    if (err) {
+      console.log(err);
+    } else if (result.length !== 0) {
+      res.send(result[0]); // отправляем найденного пользователя
+    } else {
+      res.send(404);
+    }
+  });
+}
+
 // Отобразить пользователя
 UsersController.show = function(req, res) {
   console.log('Вызвано действие: отобразить пользователя');
-  User.find({'email': req.body.email, 'password': req.body.password}, function(err, result) {
+  User.find({'id': req.params.id, 'password': req.body.password}, function(err, result) {
     if (err) {
       console.log(err);
     } else if (result.length !== 0) {

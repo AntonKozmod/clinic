@@ -25,6 +25,7 @@ mongoose.connect('mongodb://localhost/amazeriffic', {
 
 app.get("/users.json", UsersController.index); 
 app.post("/users", UsersController.create); 
+app.get("/users", UsersController.login);
 app.get("/users/:id", UsersController.show);
 //app.put("/users/:username", UsersController.update);
 //app.delete("/users/:username", UsersController.destroy); 

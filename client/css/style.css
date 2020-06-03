@@ -399,7 +399,7 @@ footer .sitemap {
 	color: #F2F1EF;
 	text-decoration: underline;
 }
-.submit {
+.submit, .submit_register {
 	display: block-inline;
 	/*position: relative;			   /*расположение 		   */
 	/*left: 50%;					   /*             по       */
@@ -419,7 +419,7 @@ footer .sitemap {
 	color: #F2F1EF;
 	cursor: pointer;
 }
-.submit:hover {
+.submit:hover, .submit_register:hover {
 	color: #F2F1EF;
 	text-decoration: underline;
 }
