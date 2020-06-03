@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+  <head> 
+    <title> Контакты </title> 
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" type="text/css" href="css/reset.css"> 
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="fonts/Droid-Sans.css">
+    <link rel="stylesheet" type="text/css" href="fonts/Ubuntu.css">
+      <script type="text/javascript" src="js/app.js"></script>
+      <script type="text/javascript" src="js/login.js"></script>
+  </head>
+  <body> 
+    <header> 
+      <a href="index.html"><img src="images/icon.png" alt="Логотип сайта" width="100px"></a>
+      <div class="container">
+        <a href="index.html"><h1> Стоматология "Улыбочку!"</h1> </a>
+        <nav> 
+          	<a href="#login_window">Войти</a> |
+			<a href="#register_window">Зарегистрироваться</a>
+        </nav>
+      </div>
+    </header>
+    <div class="block_menu">
+        <ul class="content_block_main">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О клинике</a></li>
+            <li><a href="prices.html">Услуги и цены</a></li>
+            <li><a href="faq.html">Вопросы и Ответы</a></li>
+            <li><a href="vacancy.html">Вакансии</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+    </div>
+
+    <main>
+      <div class="container">
+        <div class="main_page_info">
+          <h2 class='header'>КОНТАКТЫ</h2>
+          <h3>КОНТАКТЫ</h3> 
+          <p> Адрес: г. Казань, ул. Большая Красная, 55</p>
+          <p> Телефон: (8800) 555-35-35</p>
+          <p> E-mail: почта@mail.ru</p>
+          <p> Вконтакте: <a href="https://vk.com/" rel="nofollow" target="_blank">ссылка</a> </p>
+          <h3> РЕЖИМ РАБОТЫ СТОМАТОЛОГИИ</h3>
+          <ul>
+            <li> Пн-Пт: с 8:00 до 20:00 ч.</li>
+            <li> Сб: с 9:00 до 15:00 ч.</li>
+            <li> Вс: выходной</li>
+          </ul>
+          <h3> ГРАФИК РАБОТЫ ВРАЧЕЙ</h3>
+          <p> Этот блок находится в разработке</p>
+        </div>
+        <div class="map1">
+          <a href="https://yandex.ru/maps/org/kazanskiy_natsionalny_issledovatelskiy_tekhnicheskiy_universitet_im_a_n_tupoleva_kai/1115598613/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;"> </a>
+          <a href="https://yandex.ru/maps/43/kazan/category/university_college/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;"> </a>
+          <iframe src="https://yandex.ru/map-widget/v1/-/CCQ44DS3WA" width="100%" height="400" frameborder="1" allowfullscreen="true" style="position: relative;"> </iframe>
+        </div>
+      </div>
+      
+    </main>
+    <div class="map2">
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A8e5fdc146eacc455c6b6556b5a8d1cef29778a12a9ec467da84af333a036621f&amp;width=100%&amp;height=320&amp;lang=ru_RU&amp;scroll=false"></script>
+    </div>
+  
+	<!--Всплывающее окно входа-->
+	<div id="login_window">
+      <div id="okno_login">
+          <h2 class="h2_request">
+            Введите данные для входа
+          </h2>
+          <div class="form_request">
+            <p>Вы можете войти в систему,<br>заполнив данную форму:</p>
+            <input type="login" name="login" placeholder="Логин">
+            <input type="password" name="password" placeholder="Пароль">
+          </div>
+          <a href="#" class="close">Закрыть окно</a>
+          <a href="#" class="submit">Войти</a> <!--Пока что тоже только закрывает-->
+      </div>
+  </div>
+	<!---->
+	<!--Всплывающее окно регистрации-->
+	<div id="register_window">
+	   	<div id="okno_register">
+	       	<h2 class="h2_register">
+	       		Введите данные для регистрации
+	       	</h2>
+	       	<div class="form_request">
+	       		<p>Вы можете зарегистрироваться в системе, заполнив данную форму:</p>
+	       		<div class="inputbox_register_left">
+	       			<label for="date">Введите свое полное имя:</label>
+	       			<input type="full_name" name="Фамилия Имя Отчество" placeholder="Фамилия Имя Отчество">
+	       		</div>
+	       		<div class="inputbox_register_right">
+	       			<label for="date">Дата рождения:</label>
+	       			<input type="date" name="date" placeholder="Дата рождения">
+	       		</div>
+	       		<div class="inputbox_register_left">
+	       			<label for="tel">Номер телефона:</label>
+	       			<input type="tel" name="Номер телефона" placeholder="+7 (999) 999-99-99">
+	       		</div>
+	       		<div class="inputbox_register_right">
+	       			<label for="email">Электронная почта:</label>
+	       			<input type="email" name="Электронная почти" placeholder="name@email.com">
+	       		</div>
+	       		<div class="inputbox_register_left">
+	      			<label for="password">Придумайте пароль:</label>
+	       			<input type="password" name="password" placeholder="*********">
+	       		</div>
+	       		<div class="inputbox_register_right">
+	       			<label for="password">Повторите пароль:</label>
+	       			<input type="password" name="repeat_password" placeholder="*********">
+	       		</div>     		
+        	</div>
+	        <a href="#" class="submit">Зарегистрироваться</a> <!--Пока что тоже только закрывает-->
+	        <a href="#" class="close_register">Закрыть окно</a>
+      	</div>
+    </div>
+	<!---->
+
+    <footer>
+      <div class="container">
+        <div class="contact"> 
+          <h5>Свяжитесь с нами!</h5> <br>
+          <p>Большая Красная, 55</p> 
+          <p>Татарстан, Казань 8-800-555-35-35</p> 
+        </div>
+        <div class="sitemap"> 
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О клинике</a></li>
+            <li><a href="prices.html">Услуги и цены</a></li>
+            <li><a href="faq.html">Вопросы и Ответы</a></li>
+            <li><a href="vacancy.html">Вакансии</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
