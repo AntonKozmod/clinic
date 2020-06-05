@@ -1,0 +1,70 @@
+body {
+	background: #2cc0d3;
+}
+main {
+	background: white;
+	margin-top: 3px;
+}
+.tabs a span {
+display: inline-block;
+border-radius: 5px 5px 0 0;
+width: 120px;
+margin-right: 10px;
+text-align: center;
+background: #ccc;
+padding: 5px;
+}
+.tabs a span.active {
+	background: #eee
+}
+
+.content {
+	background: white;
+	padding-bottom: 10px;
+}
+
+.content li{
+	list-style: none;
+	margin:  10px;
+	padding-left: 5px;
+	box-shadow: 0 0 0 10px #eee;
+}
+
+.content input {
+	width: 85%;
+	height: 36px;
+	margin: 10px;
+	font-family: Jura;
+	text-align: justify;
+	font-size:  24px;
+	box-shadow: 0 0 0 10px #eee;
+}
+.content button {
+	height: 40px;
+	width: 11%;
+	min-width: 90px;
+	font-size: 16px;
+	margin:10px;
+	font-family: Ubuntu;
+	background: white;
+	box-shadow: 0 -3px 0 11px #eee;
+}
+
+.linkEdit {
+	display: inline-block;
+	float: right;
+	width: 110px;
+	height: 16px;
+}
+.linkRemove {
+	display: inline-block;
+	float: right;
+	width: 65px;
+	height: 16px;
+	padding-left: 15px; 
+}
+.linkRemove:hover {
+	background: red;
+	color: white;
+	text-decoration: none;
+}

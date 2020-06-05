@@ -3,6 +3,7 @@ var express = require("express"),
 	app = express(),
 	mongoose = require("mongoose"),
 	UsersController = require("./controllers/users_controller.js");
+	AppoController = require("./controllers/appointments_controller.js");
 	
 app.use('/',express.static(__dirname + "/client"));
 //app.use('/users/:id',express.static(__dirname + "/client"));
@@ -28,4 +29,9 @@ app.post("/users", UsersController.create);
 app.post("/accounts", UsersController.login);
 app.get("/users/:id", UsersController.show);
 //app.put("/users/:username", UsersController.update);
-//app.delete("/users/:username", UsersController.destroy); 
+//app.delete("/users/:username", UsersController.destroy);
+
+app.get("/appoint.json", AppoController.index);
+app.post("/appoint", AppoController.create);
+app.put("/appoint/:idappo", AppoController.update);
+app.delete("/appoint/:idappo", AppoController.destroy);

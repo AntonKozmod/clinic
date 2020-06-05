@@ -36,7 +36,13 @@ UsersController.show = function(req, res) {
     if (err) {
       console.log(err);
     } else if (result.length !== 0) {
-      	res.sendfile('./client/account.html');
+      if (result[0].admin === true) {
+        res.sendfile('./client/admin.html');
+      } else if (result[0].doctor === true) {
+        res.sendfile('./client/doctor.html');
+      } else {
+        res.sendfile('./client/account.html');
+      }
     } else {
       res.send(404);
     }
@@ -66,7 +72,9 @@ UsersController.create = function(req, res) {
     			    "date_of_birth": date_of_birth,
     		      "phone": phone,
     		      "email": email,
-    		      "password": password
+    		      "password": password,
+              "admin": false,
+              "doctor": false
             });
             newUser.save(function(err, result) {
                 console.log(err); 
