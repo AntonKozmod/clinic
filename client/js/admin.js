@@ -1,27 +1,46 @@
 var liaWithDeleteOnClick = function (user, callback) {
-	var $usersListItem = $("<li>").text(user.username),
-		$usersRemoveLink = $("<a>").attr("href", "users/" + user._id);
+	var $usersListItem = $("<li>").text(user.username);
 
+	var $toTheDoctorLink = $("<a>").attr("href", "#");
+	$toTheDoctorLink.addClass("link");
+	$toTheDoctorLink.text("Наначить доктором");
+	$toTheDoctorLink.on("click", function() {
+		if (confirm("Вы действительно хотите пользователя " + user.username + " назначить доктором?")) {
+			$.ajax({
+				url: "/users/" + user._id,
+				type: "UPDATE",
+				data: { "doctor": true }
+			}).done(function (responde) {
+				callback();
+			}).fail(function (err) {
+				console.log("error! " + err);
+			});
+			return false;
+		}
+	});
+
+	var $usersRemoveLink = $("<a>").attr("href", "#");
 	$usersRemoveLink.addClass("linkRemove");
-
 	$usersRemoveLink.text("Удалить");
 	$usersRemoveLink.on("click", function () {
-		$.ajax({
-			url: "/users/" + user._id,
-			type: "DELETE"
-		}).done(function (responde) {
-			callback();
-		}).fail(function (err) {
-			console.log("error on delete 'user'!");
-		});
-		return false;
+		if (confirm("Вы действительно хотите удалить пользователя " + user.username + "?")) {
+			$.ajax({
+				url: "/users/" + user._id,
+				type: "DELETE"
+			}).done(function (responde) {
+				callback();
+			}).fail(function (err) {
+				console.log("error on delete 'user'!");
+			});
+			return false;
+		}
 	});
 	$usersListItem.append($usersRemoveLink);
 
 	return $usersListItem;
 }
 
-var main = function (toDoObjects) {
+var main = function () {
 	"use strict";
 	// создание пустого массива с вкладками
 	var tabs = [];
@@ -31,7 +50,7 @@ var main = function (toDoObjects) {
 		// создаем функцию content
 		// так, что она принимает обратный вызов
 		"content": function(callback) {
-			$.getJSON("todos.json", function (usersObjects) {
+			$.getJSON("/users.json", function (usersObjects) {
 				var $content,
 					i;
 				$content = $("<ul>");
@@ -52,7 +71,7 @@ var main = function (toDoObjects) {
 	tabs.push({
 		"name": "Старые пользователи",
 		"content": function(callback) {
-			$.getJSON("todos.json", function (usersObjects) {
+			$.getJSON("/users.json", function (usersObjects) {
 				var $content,
 					i;
 				$content = $("<ul>");
@@ -73,7 +92,7 @@ var main = function (toDoObjects) {
 	tabs.push({
 		"name": "Врачи",
 		"content":function (callback) {
-			$.getJSON("todos.json", function (usersObjects) {
+			$.getJSON("/users.json", function (usersObjects) {
 				var $content,
 					i;
 				$content = $("<ul>");
@@ -119,7 +138,5 @@ var main = function (toDoObjects) {
 
 
 $(document).ready(function() {
-	$.getJSON("users.json", function (usersObjects) {
-		main(usersObjects);
-	});
+	main();
 });
