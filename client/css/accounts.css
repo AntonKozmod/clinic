@@ -8,7 +8,7 @@ main {
 .tabs a span {
 	display: inline-block;
 	border-radius: 5px 5px 0 0;
-	width: 120px;
+	width: 200px;
 	margin-right: 10px;
 	text-align: center;
 	color:white;
@@ -54,10 +54,10 @@ main {
 	box-shadow: 0 -3px 0 11px #2cc0d3;
 }
 
-.linkEdit {
+.link {
 	display: inline-block;
 	float: right;
-	width: 110px;
+	width: auto;
 	height: 16px;
 }
 .linkRemove {

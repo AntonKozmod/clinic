@@ -41,7 +41,7 @@ UsersController.show = function(req, res) {
       } else if (result[0].doctor === true) {
         res.sendfile('./client/doctor.html');
       } else {
-        res.sendfile('./client/account.html');
+        res.sendfile('./client/patient.html');
       }
     } else {
       res.send(404);
@@ -90,13 +90,11 @@ UsersController.create = function(req, res) {
 };
 
 // Обновить существующего пользователя
-/*UsersController.update = function (req, res) {
+UsersController.update = function (req, res) {
 	console.log("Вызвано действие: обновить пользователя");
-	var username = req.params.username;
-	console.log("Старое имя пользователя: " + username);
-	var newUsername = {$set: {username: req.body.username}};
-	console.log("Новое имя пользователя: " + req.body.username);
-	User.updateOne({"username": username}, newUsername, function (err,user) {
+	var id = req.params.id;
+	var query = {$set: req.body};
+	User.updateOne({"_id": id}, query, function (err,user) {
 		if (err !== null) {
 			res.status(500).json(err);
 		} else {
@@ -109,7 +107,7 @@ UsersController.create = function(req, res) {
 		}
 	});
 };
-*/
+
 // Удалить существующего пользователя
 UsersController.destroy = function (req, res) {
 	console.log("Вызвано действие: удалить пользователя");
