@@ -16,10 +16,12 @@ UsersController.index = function(req, res) {
 
 UsersController.login = function(req, res) {
   console.log('Вызвано действие: login - получить пользователя по логину и паролю');
+  console.log('email: ' + req.body.email + " password: " + req.body.password);
   User.find({'email': req.body.email, 'password': req.body.password}, function(err, result) {
     if (err) {
       console.log(err);
     } else if (result.length !== 0) {
+      console.log(result[0]);
       res.send(result[0]); // отправляем найденного пользователя
     } else {
       res.send(404);
@@ -30,7 +32,7 @@ UsersController.login = function(req, res) {
 // Отобразить пользователя
 UsersController.show = function(req, res) {
   console.log('Вызвано действие: отобразить пользователя');
-  User.find({'id': req.params.id, 'password': req.body.password}, function(err, result) {
+  User.find({'_id': req.params.id}, function(err, result) {
     if (err) {
       console.log(err);
     } else if (result.length !== 0) {
@@ -48,8 +50,8 @@ UsersController.create = function(req, res) {
 		date_of_birth = req.body.date_of_birth,
 		phone = req.body.phone,
 		email = req.body.email,
-		password = req.body.email;
-    // console.log(username);
+		password = req.body.password;
+    console.log("email: " + req.body.email + " password: " + req.body.password);
     User.find({	"email": email }, function (err, result) {
         if (err) {
             console.log(err);

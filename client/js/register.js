@@ -1,6 +1,6 @@
 var main = function () {
 	"use strict";
-	$(".submit").on("click", function() {
+	$(".submit_register").on("click", function() {
 		var full_name = $('#register_window input[name="full_name"]').val(),
 			date = $('#register_window input[name="date"]').val(),
 			tel = $('#register_window input[name="tel"]').val(),
@@ -9,11 +9,11 @@ var main = function () {
 			repeat_password = $('#register_window input[name="repeat_password"]').val();
 		if (repeat_password !== password) {
 			alert("Пароли не совпадают!\nВведите пароли снова и повторите попытку");
-			$('#register_window input[name="password"]').val() = "";
-			$('#register_window input[name="repeat_password"]').val() = "";
+			$('#register_window input[name="password"]').val("");
+			$('#register_window input[name="repeat_password"]').val("");
 		} else if ((full_name !== null && full_name.trim() !== "") && (date !== null && date.trim() !== "")) {
 			if ((tel !== null && tel.trim() !== "") && (email !== null && email.trim() !== "") && (password !== null && password.trim() !== "")) {
-				.ajax({
+				$.ajax({
 					url: '/users',
 					type: 'POST',
 					data: { 'username': full_name,

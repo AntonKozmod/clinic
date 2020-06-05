@@ -5,7 +5,7 @@ var express = require("express"),
 	UsersController = require("./controllers/users_controller.js");
 	
 app.use('/',express.static(__dirname + "/client"));
-app.use('/user/:id',express.static(__dirname + "/client"));
+//app.use('/users/:id',express.static(__dirname + "/client"));
 
 // Это модель Mongoose для задач
 http.createServer(app).listen(3000);
@@ -13,7 +13,7 @@ http.createServer(app).listen(3000);
 // объекты JSON
 app.use(express.urlencoded({ extended: true }));
 // подключаемся к хранилищу данных Amazeriffic в Mongo
-mongoose.connect('mongodb://localhost/amazeriffic', {
+mongoose.connect('mongodb://localhost/clinic', {
 		useNewUrlParser: true,
 		useCreateIndex: true,
 		useUnifiedTopology: true 
@@ -25,7 +25,7 @@ mongoose.connect('mongodb://localhost/amazeriffic', {
 
 app.get("/users.json", UsersController.index); 
 app.post("/users", UsersController.create); 
-app.get("/users", UsersController.login);
+app.post("/accounts", UsersController.login);
 app.get("/users/:id", UsersController.show);
 //app.put("/users/:username", UsersController.update);
 //app.delete("/users/:username", UsersController.destroy); 
