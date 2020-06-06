@@ -67,6 +67,13 @@ main {
 	background: white;
 }
 
+.addAppo a.disabled {
+    pointer-events: none; /* делаем ссылку некликабельной */
+    cursor: default;  /* устанавливаем курсор в виде стрелки */
+    background: #8cdae4; /* цвет текста для нективной ссылки */
+    color: #999;
+}
+
 /*
 .content button {
 	height: 40px;

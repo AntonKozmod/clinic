@@ -220,8 +220,10 @@ var main = function () {
 					$selDoctor = $("<select>"),
 					$selDate = $("<select>"),
 					$btAdd = $("<a>").text("Записаться");
+				//	$btAdd = $("<button>").text("Записаться");
 
 				$btAdd.attr("href", "#");
+				$btAdd.addClass("disabled");
 				$selDoctor.append($("<option>").text("Выберите врача"));
 				$selDate.append($("<option>").text("Выберите дату и время приема"));
 
@@ -244,7 +246,9 @@ var main = function () {
 						$.getJSON("/appoint.json", function (appoObjects) {
 							var i;
 							for (i = 0; i < appoObjects.length; i++) {
-								if ((appoObjects[i].doctor === $selDoctor.val()) && (appoObjects[i].patient == ""))  {
+								if ((appoObjects[i].doctor === $selDoctor.val()) 	// если у записи выбранный врач
+								&& (appoObjects[i].patient == "") 					// если нет пациента
+								&& (appoObjects[i].date > new Date()))  {			// если дата больше текущей
 									var $option = $("<option>").text(appoObjects[i].date);
 									$option.attr("value", appoObjects[i]._id); // сохраняю _id записи в value на будущее
 									$selDate.append($option);
@@ -252,9 +256,12 @@ var main = function () {
 							}
 							if ($selDate.length >= 2) {
 								$selDate.prop("disabled", false);
-								$btAdd.prop("disabled", false);
+								//$btAdd.prop("disabled", false);
+								$btAdd.attr("class", "");
 							} else {
 								alert("Приемов у этого врача не найдено");
+								$selDate.prop("disabled", true);
+								$btAdd.attr("class", "disabled");
 							}
 						});
 					}
