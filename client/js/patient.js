@@ -1,8 +1,8 @@
 var EditUsernameOnClick = function (user, callback) {
-	var $usersListItem = $("<li>").text(user.username);
+	var $usersListItem = $("<li>").text("ФИО: " + user.username);
 	
 	var $usersRemoveLink = $("<a>").attr("href", "#");
-	$usersRemoveLink.addClass("linkRemove");
+	$usersRemoveLink.addClass("link");
 	$usersRemoveLink.text("Редактировать");
 	$usersRemoveLink.on("click", function () {
 		var newUsername = prompt ("Введите новые ФИО: ", user.username);
@@ -24,10 +24,10 @@ var EditUsernameOnClick = function (user, callback) {
 }
 
 var EditDateOnClick = function (user, callback) {
-	var $usersListItem = $("<li>").text(user.username);
+	var $usersListItem = $("<li>").text("Дата рождения: " + user.date_of_birth);
 	
 	var $usersRemoveLink = $("<a>").attr("href", "#");
-	$usersRemoveLink.addClass("linkRemove");
+	$usersRemoveLink.addClass("link");
 	$usersRemoveLink.text("Редактировать");
 	$usersRemoveLink.on("click", function () {
 		var newDate = prompt ("Введите дату рождения: ", user.date_of_birth);
@@ -49,10 +49,10 @@ var EditDateOnClick = function (user, callback) {
 }
 
 var EditPhoneOnClick = function (user, callback) {
-	var $usersListItem = $("<li>").text(user.username);
+	var $usersListItem = $("<li>").text("Номер телефона: " + user.phone);
 	
 	var $usersRemoveLink = $("<a>").attr("href", "#");
-	$usersRemoveLink.addClass("linkRemove");
+	$usersRemoveLink.addClass("link");
 	$usersRemoveLink.text("Редактировать");
 	$usersRemoveLink.on("click", function () {
 		var newPhone = prompt ("Введите номер телефона: ", user.phone);
@@ -74,10 +74,10 @@ var EditPhoneOnClick = function (user, callback) {
 }
 
 var EditEmailOnClick = function (user, callback) {
-	var $usersListItem = $("<li>").text(user.username);
+	var $usersListItem = $("<li>").text("Электронная почта: " + user.email);
 	
 	var $usersRemoveLink = $("<a>").attr("href", "#");
-	$usersRemoveLink.addClass("linkRemove");
+	$usersRemoveLink.addClass("link");
 	$usersRemoveLink.text("Редактировать");
 	$usersRemoveLink.on("click", function () {
 		var newEmail = prompt ("Введите электронную почту: ", user.email);
@@ -99,10 +99,10 @@ var EditEmailOnClick = function (user, callback) {
 }
 
 var EditPasswordOnClick = function (user, callback) {
-	var $usersListItem = $("<li>").text(user.username);
+	var $usersListItem = $("<li>").text("Пароль: ******");
 	
 	var $usersRemoveLink = $("<a>").attr("href", "#");
-	$usersRemoveLink.addClass("linkRemove");
+	$usersRemoveLink.addClass("link");
 	$usersRemoveLink.text("Редактировать");
 	$usersRemoveLink.on("click", function () {
 		var newPassword = prompt ("Введите электронную почту: ", user.password);
@@ -159,11 +159,7 @@ var main = function () {
 		// так, что она принимает обратный вызов
 		"content": function(callback) {
 			$.get("account/", function(user) {
-				var $content;
-
-				$content = $("<ul>").append(EditOnClick(user, function() {
-					$(".tabs a:first-child span").trigger("click");
-				}));
+				var $content = $("<ul>");
 
 				$content.append(EditUsernameOnClick(user, function() {
 					$(".tabs a:first-child span").trigger("click");
@@ -217,19 +213,22 @@ var main = function () {
 	tabs.push({
 		"name": "Записаться к врачу",
 		"content": function(callback) {
-			var $content,
-				$selDoctor = ("<select>"),
-				$selDate = ("<select>"),
-				$btAdd = ("<button>").text("Записаться");
+			
 
-			$selDoctor.append($("<option>").text("Выберите врача"));
-			$selDate.append($("<option>").text("Выберите дату и время приема"));
-
-			$selDate.prop("disabled", true);
-			$btAdd.prop("disabled", true);
-
-			// заполняем список с врачами:
 			$.getJSON("/users.json", function (usersObjects) {
+				var $content = $("<div>").addClass("addAppo"),
+					$selDoctor = $("<select>"),
+					$selDate = $("<select>"),
+					$btAdd = $("<a>").text("Записаться");
+
+				$btAdd.attr("href", "#");
+				$selDoctor.append($("<option>").text("Выберите врача"));
+				$selDate.append($("<option>").text("Выберите дату и время приема"));
+
+				$selDate.prop("disabled", true);
+				$btAdd.prop("disabled", true);
+				
+				// заполняем список с врачами:
 				var i;
 				for (i = 0; i < usersObjects.length; i++) {
 					if (usersObjects[i].doctor) {
@@ -238,48 +237,52 @@ var main = function () {
 						$selDoctor.append($option);
 					}
 				}
-			});
 
-			$selDoctor.change(function() {
-				if ($(this).val() != 0) {
-					// заполняем список с приемами
-					$.getJSON("/appoint.json", function (apposObjects) {
-						var i;
-						for (i = 0; i < appoObjects.length; i++) {
-							if ((appoObjects[i].doctor === $selDoctor.val()) && (appoObjects[i].patient == ""))  {
-								var $option = $("<option>").text(appoObjects[i].date);
-								$option.attr("value", appoObjects[i]._id); // сохраняю _id записи в value на будущее
-								$selDate.append($option);
+				$selDoctor.change(function() {
+					if ($(this).val() != 0) {
+						// заполняем список с приемами
+						$.getJSON("/appoint.json", function (appoObjects) {
+							var i;
+							for (i = 0; i < appoObjects.length; i++) {
+								if ((appoObjects[i].doctor === $selDoctor.val()) && (appoObjects[i].patient == ""))  {
+									var $option = $("<option>").text(appoObjects[i].date);
+									$option.attr("value", appoObjects[i]._id); // сохраняю _id записи в value на будущее
+									$selDate.append($option);
+								}
 							}
-						}
-						if ($selDate.size() !== 0) {
-							$selDate.prop("disabled", false);
-							$inpDescription.prop("disabled", false);
-							$btAdd.prop("disabled", false);
-						} else {
-							alert("Приемов у этого врача не найдено");
-						}
-					});
-				}
-			});
+							if ($selDate.length >= 2) {
+								$selDate.prop("disabled", false);
+								$btAdd.prop("disabled", false);
+							} else {
+								alert("Приемов у этого врача не найдено");
+							}
+						});
+					}
+				});
 				
 
-			$btAdd.on("click", function() {
-				if (confirm("Вы действительно хотите записаться на прием?")) {
-					$.ajax({
-						url: "appoint/" + selDate.val(),
-						type: "PUT"
-					}).done(function(responde) {
-						alert("Вы успешно записались на прием!");
-						$(".tabs a:nth-child(2) span").trigger("click");		
-					}).fail(function(jqXHR, textStatus, error) {
-						alert("Ошибка!\n" + jqXHR.status + jqXHR.textStatus);
-					})
-				}
+				$btAdd.on("click", function() {
+					if (confirm("Вы действительно хотите записаться на прием?")) {
+						$.ajax({
+							url: "appoint/" + selDate.val(),
+							type: "PUT"
+						}).done(function(responde) {
+							alert("Вы успешно записались на прием!");
+							$(".tabs a:nth-child(2) span").trigger("click");		
+						}).fail(function(jqXHR, textStatus, error) {
+							alert("Ошибка!\n" + jqXHR.status);
+						})
+					}
+				});
+
+				$content.append($selDoctor, $selDate, $btAdd);
+				callback(null, $content);
+
+			}).fail(function(jqXHR,textStatus, error) {
+				callback(error, null);
 			});
 
-			$content.append($selDoctor, $selDate, $btAdd);
-			callback(null, $content);
+			
 		}
 	});
 
