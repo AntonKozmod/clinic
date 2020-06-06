@@ -1,66 +1,152 @@
-var EditOnClick = function (user, callback) {
+var EditUsernameOnClick = function (user, callback) {
 	var $usersListItem = $("<li>").text(user.username);
 	
 	var $usersRemoveLink = $("<a>").attr("href", "#");
 	$usersRemoveLink.addClass("linkRemove");
-	$usersRemoveLink.text("Удалить");
+	$usersRemoveLink.text("Редактировать");
 	$usersRemoveLink.on("click", function () {
-		if (confirm("Вы действительно хотите удалить пользователя " + user.username + "?")) {
+		var newUsername = prompt ("Введите новые ФИО: ", user.username);
+		$.ajax({
+			url: "/users/" + user._id,
+			type: "PUT",
+			data: { username: newUsername }
+		}).done(function (responde) {
+			callback();
+		}).fail(function (err) {
+			console.log("error on edit username!");
+		});
+		return false;
+		
+	});
+	$usersListItem.append($usersRemoveLink);
+
+	return $usersListItem;
+}
+
+var EditDateOnClick = function (user, callback) {
+	var $usersListItem = $("<li>").text(user.username);
+	
+	var $usersRemoveLink = $("<a>").attr("href", "#");
+	$usersRemoveLink.addClass("linkRemove");
+	$usersRemoveLink.text("Редактировать");
+	$usersRemoveLink.on("click", function () {
+		var newDate = prompt ("Введите дату рождения: ", user.date_of_birth);
+		$.ajax({
+			url: "/users/" + user._id,
+			type: "PUT",
+			data: { date_of_birth: newDate }
+		}).done(function (responde) {
+			callback();
+		}).fail(function (err) {
+			console.log("error on edit date!");
+		});
+		return false;
+		
+	});
+	$usersListItem.append($usersRemoveLink);
+
+	return $usersListItem;
+}
+
+var EditPhoneOnClick = function (user, callback) {
+	var $usersListItem = $("<li>").text(user.username);
+	
+	var $usersRemoveLink = $("<a>").attr("href", "#");
+	$usersRemoveLink.addClass("linkRemove");
+	$usersRemoveLink.text("Редактировать");
+	$usersRemoveLink.on("click", function () {
+		var newPhone = prompt ("Введите номер телефона: ", user.phone);
+		$.ajax({
+			url: "/users/" + user._id,
+			type: "PUT",
+			data: { phone: newPhone }
+		}).done(function (responde) {
+			callback();
+		}).fail(function (err) {
+			console.log("error on edit phone!");
+		});
+		return false;
+		
+	});
+	$usersListItem.append($usersRemoveLink);
+
+	return $usersListItem;
+}
+
+var EditEmailOnClick = function (user, callback) {
+	var $usersListItem = $("<li>").text(user.username);
+	
+	var $usersRemoveLink = $("<a>").attr("href", "#");
+	$usersRemoveLink.addClass("linkRemove");
+	$usersRemoveLink.text("Редактировать");
+	$usersRemoveLink.on("click", function () {
+		var newEmail = prompt ("Введите электронную почту: ", user.email);
+		$.ajax({
+			url: "/users/" + user._id,
+			type: "PUT",
+			data: { email: newEmail }
+		}).done(function (responde) {
+			callback();
+		}).fail(function (err) {
+			console.log("error on edit email!");
+		});
+		return false;
+		
+	});
+	$usersListItem.append($usersRemoveLink);
+
+	return $usersListItem;
+}
+
+var EditPasswordOnClick = function (user, callback) {
+	var $usersListItem = $("<li>").text(user.username);
+	
+	var $usersRemoveLink = $("<a>").attr("href", "#");
+	$usersRemoveLink.addClass("linkRemove");
+	$usersRemoveLink.text("Редактировать");
+	$usersRemoveLink.on("click", function () {
+		var newPassword = prompt ("Введите электронную почту: ", user.password);
+		$.ajax({
+			url: "/users/" + user._id,
+			type: "PUT",
+			data: { password: newPassword }
+		}).done(function (responde) {
+			callback();
+		}).fail(function (err) {
+			console.log("error on edit password!");
+		});
+		return false;
+		
+	});
+	$usersListItem.append($usersRemoveLink);
+
+	return $usersListItem;
+}
+
+var liaWithDeleteOnClick = function (appo, callback) {
+	var $apposListItem = $("<li>").text(appo.date);
+	
+	var $apposRemoveLink = $("<a>").attr("href", "#");
+	$apposRemoveLink.addClass("linkRemove");
+	$apposRemoveLink.text("Удалить");
+	$apposRemoveLink.on("click", function () {
+		if (confirm("Вы действительно хотите удалить запись на прием на " + appo.date + "?")) {
 			$.ajax({
-				url: "/users/" + user._id,
-				type: "DELETE"
+				url: "appoint/" + appo._id,
+				type: "PUT"
 			}).done(function (responde) {
 				callback();
 			}).fail(function (err) {
-				console.log("error on delete 'user'!");
+				console.log("error on delete 'appo'!");
 			});
 			return false;
 		}
 	});
-	$usersListItem.append($usersRemoveLink);
+	$apposListItem.append($apposRemoveLink);
 
-	if (!user.doctor) {
-		var $toTheDoctorLink = $("<a>").attr("href", "#");
-		$toTheDoctorLink.addClass("link");
-		$toTheDoctorLink.text("Сделать врачом");
-		$toTheDoctorLink.on("click", function() {
-			if (confirm("Вы действительно хотите пользователя " + user.username + " назначить врачом?")) {
-				$.ajax({
-					url: "/users/" + user._id,
-					type: "PUT",
-					data: { "doctor": true }
-				}).done(function (responde) {
-					callback();
-				}).fail(function (err) {
-					console.log("error! " + err);
-				});
-				return false;
-			}
-		});
-		$usersListItem.append($toTheDoctorLink);
-	} else {
-		var $toTheDoctorLink = $("<a>").attr("href", "#");
-		$toTheDoctorLink.addClass("link");
-		$toTheDoctorLink.text("Убрать из врачей");
-		$toTheDoctorLink.on("click", function() {
-			if (confirm("Вы действительно хотите пользователя " + user.username + " убрать из врачей?")) {
-				$.ajax({
-					url: "/users/" + user._id,
-					type: "PUT",
-					data: { "doctor": false }
-				}).done(function (responde) {
-					callback();
-				}).fail(function (err) {
-					console.log("error! " + err);
-				});
-				return false;
-			}
-		});
-		$usersListItem.append($toTheDoctorLink);
-	}
-
-	return $usersListItem;
+	return $apposListItem;
 }
+
 
 var main = function () {
 	"use strict";
@@ -75,25 +161,27 @@ var main = function () {
 			$.get("account/", function(user) {
 				var $content;
 
-				$content = $("<ul>");
-
-				$content.append(EditOnClick("Имя пользователя: " + user.username, function() {
+				$content = $("<ul>").append(EditOnClick(user, function() {
 					$(".tabs a:first-child span").trigger("click");
 				}));
 
-				$content.append(EditOnClick("Дата рождения: " + user.date_of_birth, function() {
+				$content.append(EditUsernameOnClick(user, function() {
+					$(".tabs a:first-child span").trigger("click");
+				}));
+
+				$content.append(EditDateOnClick(user, function() {
 					$(".tabs a:first-child span").trigger("click");
 				}));
 				
-				$content.append(EditOnClick("Номер телефона: " + user.phone, function() {
+				$content.append(EditPhoneOnClick(user, function() {
 					$(".tabs a:first-child span").trigger("click");
 				}));
 
-				$content.append(EditOnClick("Адрес электронной почты: " + user.email, function() {
+				$content.append(EditEmailOnClick(user, function() {
 					$(".tabs a:first-child span").trigger("click");
 				}));
 				
-				$content.append(EditOnClick("Пароль: *********", function() {
+				$content.append(EditPasswordOnClick(user, function() {
 					$(".tabs a:first-child span").trigger("click");
 				}));
 
@@ -112,13 +200,12 @@ var main = function () {
 			$content.append($("<a>").text(""));
 			$.getJSON("appoint.json", function (appoObjects) {
 				var i;
-				for (i = 0; i < usersObjects.length; i++) {
-					if (!usersObjects[i].admin && !usersObjects[i].doctor) {
-						var $usersListItem = liaWithDeleteOnClick(usersObjects[i], function() {
-							$(".tabs a:nth-child(2) span").trigger("click");
+				for (i = 0; i < appoObjects.length; i++) {
+					var $apposListItem = liaWithDeleteOnClick(appoObjects[i], function() {
+						alert("Вы успешно отказались от приема!");
+						$(".tabs a:nth-child(2) span").trigger("click");
 						});
-						$content.append($usersListItem);
-					}
+					$content.append($apposListItem);
 				}
 				callback(null, $content);
 			}).fail(function(jqXHR, textStatus, error) {
