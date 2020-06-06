@@ -4,9 +4,9 @@ var mongoose = require("mongoose"),
 // Это модель mongoose для записей к врачу
 AppoSchema = mongoose.Schema({
 	date: Date, // дата приема
-	description: String, // описание (комментарий пациента для врача)
+	//description: String, // описание (комментарий пациента для врача)
 	doctor: { type: ObjectId, ref: "User" }, // id врача, которого выбрал пациент
-	owner: { type: ObjectId, ref: "User" } // id пациента
+	patient: { type: ObjectId, ref: "User" } // id пациента
 });
 var Appo = mongoose.model("Appo", AppoSchema);
 module.exports = Appo;

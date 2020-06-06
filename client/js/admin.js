@@ -68,7 +68,7 @@ var main = function () {
 	var tabs = [];
 	// добавляем вкладку Новые
 	tabs.push({
-		"name": "Новые пациенты",
+		"name": "Новые клиенты",
 		// создаем функцию content
 		// так, что она принимает обратный вызов
 		"content": function(callback) {
@@ -93,7 +93,7 @@ var main = function () {
 
 	// добавляем вкладку Старые
 	tabs.push({
-		"name": "Старые пациенты",
+		"name": "Старые клиенты",
 		"content": function(callback) {
 			$.getJSON("/users.json", function (usersObjects) {
 				var $content,
@@ -125,7 +125,7 @@ var main = function () {
 				for (i = 0; i < usersObjects.length; i++) {
 					if (usersObjects[i].doctor) {
 						var $usersListItem = liaWithDeleteOnClick(usersObjects[i], function() {
-							$(".tabs a:nth-child(2) span").trigger("click");
+							$(".tabs a:nth-child(3) span").trigger("click");
 						});
 						$content.append($usersListItem);	
 					}

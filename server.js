@@ -28,10 +28,11 @@ app.get("/users.json", UsersController.index);
 app.post("/users", UsersController.create); 
 app.post("/accounts", UsersController.login);
 app.get("/users/:id", UsersController.show);
+app.get("/users/:id/account", UsersController.getaccount);
 app.put("/users/:id", UsersController.update);
 app.delete("/users/:id", UsersController.destroy);
 
-//app.get("/appoint.json", AppoController.index);
+app.get("/appoint.json", AppoController.index);
 //app.post("/appoint", AppoController.create);
 //app.put("/appoint/:idappo", AppoController.update);
 //app.delete("/appoint/:idappo", AppoController.destroy);

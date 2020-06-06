@@ -50,6 +50,20 @@ UsersController.show = function(req, res) {
   });
 };
 
+// Получить информацию о своем аккаунте
+UsersController.getaccount = function(req, res) {
+  console.log("Вызвано действие: UsersController.getaccount");
+  User.find({'_id': req.params.id}, function(err, result) {
+      if (err) {
+        console.log(err);
+      } else if (result.length !== 0) {
+        res.send(result[0]);
+      } else {
+        res.send(404);
+      }
+  });
+}
+
 // Создать нового пользователя
 UsersController.create = function(req, res) {
   console.log('Вызвано действие: создать пользователя');
@@ -113,9 +127,8 @@ UsersController.update = function (req, res) {
 UsersController.destroy = function (req, res) {
 	console.log("Вызвано действие: удалить пользователя");
 	var id = req.params.id;
-
   //console.log("Удаляем все записи пользователя");
- 	Appo.deleteMany({"owner": id}, function (err, appo) {
+ 	Appo.updateMany({"patient": id}, {$set: {"patient": ""}}, function (err, appo) {
     //console.log("Удаляем пользователя");
     User.deleteOne({"_id": id}, function (err, user) {
       if (err !== null) {
