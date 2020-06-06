@@ -31,10 +31,12 @@ app.get("/users/:id", UsersController.show);
 app.put("/users/:id", UsersController.update);
 app.delete("/users/:id", UsersController.destroy);
 
-
-
-
 //app.get("/appoint.json", AppoController.index);
 //app.post("/appoint", AppoController.create);
 //app.put("/appoint/:idappo", AppoController.update);
 //app.delete("/appoint/:idappo", AppoController.destroy);
+
+app.get("/users/:id/appoint.json", AppoController.index);
+app.post("/users/:id/appoint", AppoController.create);
+app.put("/users/:id/appoint/:idappo", AppoController.update);
+app.delete("/users/:id/appoint/:idappo", AppoController.destroy);
