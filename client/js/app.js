@@ -1,13 +1,13 @@
 var current = 0;
 var curr_activ = 0;
 
-var img1 = 'https://sun1-16.userapi.com/g66Dj--2FoLA5bYpOxkcgi3nfFAkb3B2kZNZTg/_FVsKS_25Js.jpg';
+var img1 = 'images/img1.jpg';
 var text1 = "<h2 class='text_under'>ВЫСОКОКЛАССНЫЕ СПЕЦИАЛИСТЫ<br><br>Молодые и амбициозные<br><br>Большая часть нашего медперсонала - молодые врачи, с самыми свежими и актуальными знаниями в своей области</h2>";
-var img2 = 'https://sun1-25.userapi.com/3R-igCu--Swzoh-hoq7h_j6BkWAyiZGiPjFGGQ/wH0PEJpr5qw.jpg';
+var img2 = 'images/img2.jpg';
 var text2 = "<h2 class='text_under'>ЛУЧШЕЕ СОВРЕМЕННОЕ ОБОРУДОВАНИЕ<br><br>Не хуже, чем у Запада<br><br>В нашей стоматологической клинике установлено самое лучшее отечественное оборудование, соответствующее всем стандартам качества</h2>";
-var img3 = 'https://sun1-93.userapi.com/Ms0oYGFHAYSxgxuHBnfaxBBsfC_9uTu2eSmWhg/m0btnQZ-n4U.jpg';
+var img3 = 'images/img3.jpg';
 var text3 = "<h2 class='text_under'>ДЕТСКОЕ ОТДЕЛЕНИЕ<br><br>Дети любят ходить к нам!<br><br>В нашей клинике установлена игровая зона с телевизором, раскрасками и сладостями, чтобы ваше чадо могло расслабиться перед походом в кабинет доктора. А после приема каждого ребенка ждет вкусный подарок!</h2>";
-var img4 = 'https://sun9-51.userapi.com/c853420/v853420577/234883/Hy3glO2k3EU.jpg';
+var img4 = 'images/img4.jpg';
 var text4 = "<h2 class='text_under'>ДОСТУПНЫЕ ЦЕНЫ<br><br>Доступна кредитная система и рассрочка!<br><br>В нашей клинике каждый клиент сможет позволить себе здоровую и красивую улыбку!</h2>"
 var text_activ1 = "Выберите вид искусства";
 var text_activ2 = "Выберите развлечение";

@@ -1,7 +1,7 @@
 body {
 	/*background: #2cc0d3; */
-	font-family: Tahoma;
-	font-size: 100%;
+	font-family: "Baskerville Old Face";
+	font-size: 110%;
 	margin: 0; /* Убираем отступы */
 }
 
@@ -16,17 +16,17 @@ a {
 }
 a:hover { /* псевдокласс для подчеркивания при наведении*/
 	text-decoration: underline;
-	color: #2cc0d3;
+	color: #00a85a;
 }
 
 h3, h4 {
-	font-family: Ubuntu;
-	font-size: 120%;
+	font-family: "Baskerville Old Face";
+	font-size: 125%;
 }
 h2 {
 	font-size:25px;
 	padding: 20px;
-	color: #2abed1;
+	color: #00a85a;
 }
 .image h2 {
 	font-size:25px;
@@ -49,8 +49,8 @@ header img {
 header h1 {
 	float: left;
 	width: 650px;
-	font-size: 300%;
-	font-style: italic;
+	font-family: "Baskerville Old Face";
+	font-size: 320%;
 	text-align: left;
 	padding-top: 25px;
 	padding-left: 75px;
@@ -66,7 +66,7 @@ header nav {
     margin-right : 0.1%;
     width: 100%;
     float:left;
-    background: #2cc0d3;
+    background: #00a85a;
     padding-top: 15px;
     padding-bottom: 15px;
 }
@@ -103,13 +103,13 @@ main .bottom-main {
 	line-height: 1.5;
 }
 main .top-main h2, h3 {
-	color: #2abed1;
+	color: #00a85a;
 	padding-top: 0px;
 	padding-bottom: 0px;
 }
 main .left-main { 
 	margin-top: 15px;
-	border-right: solid 1px #2cc0d3;
+	border-right: solid 1px #00a85a;
 	width: 50%;
 	float:left;
 	/*padding-bottom: 10px;*/
@@ -154,7 +154,7 @@ ul.content_block_main li a:hover {
 	top: 690px;
 	height: 180px;
 	position: absolute;
-	background: #2cc0d3;
+	background: #00a85a;
 	color: #F2F1EF;
 	opacity: 0.8;
 }
@@ -171,7 +171,7 @@ ul.content_block_main li a:hover {
 }
 .right_btn1_2, .left_btn1_2 {
 	position: absolute;
-	background: #2cc0d3;
+	background: #00a85a;
 	padding: 14px 16px;
 	font-size: 24px;
 	color: black;
@@ -204,7 +204,7 @@ ul {
 	list-style-position: inside;
 }
 footer {
-	background: #2cc0d3; 
+	background: #00a85a; 
 	overflow: auto;
 	padding: 10px;
 	color: #F2F1EF;
@@ -290,13 +290,13 @@ footer .sitemap {
 /* Дополнения для vacancy.html */
 .vacancy-left {
 	max-width: 480px;
-	height: 500px;
+	height: 530px;
 	float: left;
 	line-height: 1.5;
 }
 .vacancy-right {
 	max-width: 480px;
-	height: 500px;
+	height: 530px;
 	float: right;
 	line-height: 1.5;
 }
@@ -307,7 +307,7 @@ footer .sitemap {
 	transform: translate(-50%, 0); /*                центру*/
 	width: 185px;
 	height: 34px; /* уменьшил ширину с 40px для того, чтоб по высоте текст выравнивался (костыль, другие методы не работают) */
-	background: #2cc0d3;
+	background: #00a85a;
 	border: 0;
 	text-align: center;
 	padding-top: 6px; /* продолжение костыля */
@@ -325,7 +325,7 @@ footer .sitemap {
 .h2_request {
 	display: inline-block;
 	width: 460px;
-	background: #2cc0d3;
+	background: #00a85a;
 	color: #F2F1EF; 
 }
 .form_request p {
@@ -383,7 +383,7 @@ footer .sitemap {
 	float: left;
 	width: 185px;
 	height: 29px; /* уменьшил ширину с 40px для того, чтоб по высоте текст выравнивался (костыль, другие методы не работают) */
-	background: #2cc0d3;
+	background: #00a85a;
 	border: 0;
 	text-align: center;
 	padding-top: 11px; /* продолжение костыля */
@@ -407,7 +407,7 @@ footer .sitemap {
 	float: right;
 	width: 185px;
 	height: 29px; /* уменьшил ширину с 40px для того, чтоб по высоте текст выравнивался (костыль, другие методы не работают) */
-	background: #2cc0d3;
+	background: #00a85a;
 	border: 0;
 	text-align: center;
 	padding-top: 11px; /* продолжение костыля */
@@ -479,7 +479,7 @@ footer .sitemap {
 .h2_register {
 	display: inline-block;
 	width: 930px;
-	background: #2cc0d3;
+	background: #00a85a;
 	color: #F2F1EF; 
 }
 .form_register p {
@@ -505,7 +505,7 @@ footer .sitemap {
 	float: right;
 	width: 185px;
 	height: 29px; /* уменьшил ширину с 40px для того, чтоб по высоте текст выравнивался (костыль, другие методы не работают) */
-	background: #2cc0d3;
+	background: #00a85a;
 	border: 0;
 	text-align: center;
 	padding-top: 11px; /* продолжение костыля */
@@ -528,14 +528,14 @@ footer .sitemap {
 table.price_table {
 	width:100%;
 	border: 1;
-	border-color:#black;
+	border-color: black;
 }
 table.price_table td{
 	padding: 10px;
 	vertical-align: middle;
 }
 table.price_table td.td-name {
-	background-color:#2cc0d3;
+	background-color:#00a85a;
 }
 table.price_table td h3 {
 	margin-bottom:4px !important;

@@ -19,6 +19,7 @@ var main = function () {
 			});
 		}
 	});
+	console.log("login.js выполнен");
 }
 
 $(document).ready(main);
