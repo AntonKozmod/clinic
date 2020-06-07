@@ -38,7 +38,7 @@ AppoController.create = function (req, res) {
 	console.log("Вызван AppoController.create");
 	var newAppo = new Appo({"date": req.body.date,
 							//"description": req.body.description,
-							"doctor": req.body.id});
+							"doctor": req.params.id});
 	newAppo.save(function (err, result) {
 		console.log(result);
 		if (err !== null) {
@@ -68,59 +68,44 @@ AppoController.destroy = function (req, res) {
 }
 
 AppoController.update = function (req, res) {
-	console.log("Вызван AppoController.update");
-	var newInfo = req.body || null;
-	if (newInfo == null) {
-		// Для записи пациента (и для удаления пациента из записи)
-		Appo.find({"_id": req.params.idappo}, function (err, result) {
-			if (err !== null) {
-				res.status(500).json(err);
-			} else if (result.length === 0) {
-				res.status(404).json({"result_length": 0});
+	console.log("Вызван AppoController.update\nidappo: " + req.params.idappo);
+	// Для записи пациента (и для удаления пациента из записи)
+	Appo.find({"_id": req.params.idappo}, function (err, result) {
+		if (err !== null) {
+			console.log("1: " + err)
+			res.status(500).json(err);
+		} else if (result.length === 0) {
+			res.status(404).json({"result_length": 0});
 			} else {
-				if (result[0].patient == "") {
-					Appo.updateOne({"_id": req.params.idappo}, {$set: {"patient": req.params.id}}, function (err, appo) {
-						if (err !== null) {
-							res.status(500).json(err);
-						} else {
-							if (appo.n === 1 && appo.nModified === 1 && appo.ok === 1) {
-								res.status(200).json(appo);
+			if (result[0].patient == undefined) {
+				Appo.updateOne({"_id": req.params.idappo}, {$set: {"patient": req.params.id}}, function (err, appo) {
+					if (err !== null) {
+						console.log("2: " + err)
+						res.status(500).json(err);
+					} else {
+						if (appo.n === 1 && appo.nModified === 1 && appo.ok === 1) {
+							res.status(200).json(appo);
 							} else {
-								res.status(404).json({"status": 404});
-							}
+							res.status(404).json({"status": 404});
 						}
-					});
-				} else {
-					Appo.updateOne({"_id": req.params.idappo}, {$set: {"patient": ""}}, function (err, appo) {
-						if (err !== null) {
-							res.status(500).json(err);
-						} else {
-							if (appo.n === 1 && appo.nModified === 1 && appo.ok === 1) {
-								res.status(200).json(appo);
-							} else {
-								res.status(404).json({"status": 404});
-							}
-						}
-					});
-				}
-			}
-		});
-		
-	} else {
-		var idappo = req.params.idappo;
-		var query = {$set: newInfo};
-		Appo.updateOne({"_id": idappo}, query, function (err,appo) {
-			if (err !== null) {
-				res.status(500).json(err);
+					}
+				});
 			} else {
-				if (appo.n === 1 && appo.nModified === 1 && appo.ok === 1) {
-					res.status(200).json(appo);
-				} else {
-					res.status(404).json({"status": 404});
-				}
+				Appo.updateOne({"_id": req.params.idappo}, {$set: {"patient": undefined}}, function (err, appo) {
+					if (err !== null) {
+						console.log("3: " + err)
+						res.status(500).json(err);
+					} else {
+							if (appo.n === 1 && appo.nModified === 1 && appo.ok === 1) {
+							res.status(200).json(appo);
+						} else {
+							res.status(404).json({"status": 404});
+						}
+					}
+				});
 			}
-		});
-	}
+		}
+	});
 }
 
 module.exports = AppoController;

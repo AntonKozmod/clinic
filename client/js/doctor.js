@@ -24,7 +24,14 @@ var EditUsernameOnClick = function (user, callback) {
 }
 
 var EditDateOnClick = function (user, callback) {
-	var $usersListItem = $("<li>").text("Дата рождения: " + user.date_of_birth);
+	var date = new Date(user.date_of_birth);
+	var optionsDate = {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	};
+
+	var $usersListItem = $("<li>").text("Дата рождения: " + date.toLocaleString("ru", optionsDate));
 	
 	var $usersRemoveLink = $("<a>").attr("href", "#");
 	$usersRemoveLink.addClass("link");
@@ -124,25 +131,80 @@ var EditPasswordOnClick = function (user, callback) {
 }
 
 var liaWithDeleteOnClick = function (appo, callback) {
-	var $apposListItem = $("<li>").text(appo.date);
+	var $apposListItem = $("<li>");
 	
-	var $apposRemoveLink = $("<a>").attr("href", "#");
-	$apposRemoveLink.addClass("linkRemove");
-	$apposRemoveLink.text("Удалить");
-	$apposRemoveLink.on("click", function () {
-		if (confirm("Вы действительно хотите удалить запись на прием на " + appo.date + "?")) {
-			$.ajax({
-				url: "appoint/" + appo._id,
-				type: "DELETE"
-			}).done(function (responde) {
-				callback();
-			}).fail(function (err) {
-				console.log("error on delete 'appo'!");
+	if (appo.patient != undefined) {
+		$.ajax ({
+			url: "/users/" + appo.patient + "/account",
+			type: "GET"
+		}).done(function(responde) {
+			var date = new Date(appo.date);
+			var options = {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric',
+				weekday: 'long',
+				timezone: 'UTC',
+				hour: 'numeric',
+				minute: 'numeric',
+			};
+
+			var str = date.toLocaleString("ru", options);
+			str = str + ", пациент: " +	responde.username;
+			$apposListItem.text(str);
+	
+			var $apposRemoveLink = $("<a>").attr("href", "#");
+			$apposRemoveLink.addClass("linkRemove");
+			$apposRemoveLink.text("Удалить");
+			$apposRemoveLink.on("click", function () {
+				if (confirm("Вы действительно хотите удалить запись на прием на " + date + "?")) {
+					$.ajax({
+						url: "appoint/" + appo._id,
+						type: "DELETE"
+					}).done(function (responde) {
+						callback();
+					}).fail(function (err) {
+						console.log("error on delete 'appo'!");
+					});
+					return false;
+				}
 			});
-			return false;
-		}
-	});
-	$apposListItem.append($apposRemoveLink);
+			$apposListItem.append($apposRemoveLink);
+		}).fail(function (err) {
+			console.log("Ошибка: " + err);
+		});
+	} else {
+		var date = new Date(appo.date);
+		var options = {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+			weekday: 'long',
+			timezone: 'UTC',
+			hour: 'numeric',
+			minute: 'numeric',
+			};
+			var str = date.toLocaleString("ru", options);
+		$apposListItem.text(str);
+
+		var $apposRemoveLink = $("<a>").attr("href", "#");
+		$apposRemoveLink.addClass("linkRemove");
+		$apposRemoveLink.text("Удалить");
+		$apposRemoveLink.on("click", function () {
+			if (confirm("Вы действительно хотите удалить запись на прием на " + date + "?")) {
+				$.ajax({
+					url: "appoint/" + appo._id,
+					type: "DELETE"
+				}).done(function (responde) {
+					callback();
+				}).fail(function (err) {
+					console.log("error on delete 'appo'!");
+				});
+				return false;
+			}
+		});
+		$apposListItem.append($apposRemoveLink);
+	}  
 
 	return $apposListItem;
 }
@@ -152,7 +214,7 @@ var main = function () {
 	"use strict";
 	// создание пустого массива с вкладками
 	var tabs = [];
-	// добавляем вкладку Обо мне
+
 	tabs.push({
 		"name": "Обо мне",
 		// создаем функцию content
@@ -188,7 +250,6 @@ var main = function () {
 		}
 	});
 
-	// добавляем вкладку Мои записи к врачу
 	tabs.push({
 		"name": "Предстоящие приемы",
 		"content": function(callback) {
@@ -197,11 +258,13 @@ var main = function () {
 			$.getJSON("appoint.json", function (appoObjects) {
 				var i;
 				for (i = 0; i < appoObjects.length; i++) {
-					var $apposListItem = liaWithDeleteOnClick(appoObjects[i], function() {
-						alert("Вы успешно отказались от приема!");
-						$(".tabs a:nth-child(2) span").trigger("click");
-						});
-					$content.append($apposListItem);
+					if (new Date(appoObjects[i].date) >= new Date()) {
+						var $apposListItem = liaWithDeleteOnClick(appoObjects[i], function() {
+							alert("Вы успешно отказались от приема!");
+							$(".tabs a:nth-child(2) span").trigger("click");
+							});
+						$content.append($apposListItem);	
+					}
 				}
 				callback(null, $content);
 			}).fail(function(jqXHR, textStatus, error) {
@@ -213,83 +276,31 @@ var main = function () {
 	tabs.push({
 		"name": "Создать запись на прием",
 		"content": function(callback) {
-			
+			var $content = $("<div>").addClass("newAppo"),
+				$inpDate = $("<input>").attr("type", "datetime-local"),
+				$linkAdd = $("<a>").text("Создать запись");
 
-			$.getJSON("/users.json", function (usersObjects) {
-				var $content = $("<div>").addClass("addAppo"),
-					$selDoctor = $("<select>"),
-					$selDate = $("<select>"),
-					$btAdd = $("<a>").text("Записаться");
-				//	$btAdd = $("<button>").text("Записаться");
+			$inpDate.attr("placeholder", "Выберите дату и время приема");
+			$linkAdd.attr("href", "#");
 
-				$btAdd.attr("href", "#");
-				$btAdd.addClass("disabled");
-				$selDoctor.append($("<option>").text("Выберите врача"));
-				$selDate.append($("<option>").text("Выберите дату и время приема"));
-
-				$selDate.prop("disabled", true);
-				$btAdd.prop("disabled", true);
-				
-				// заполняем список с врачами:
-				var i;
-				for (i = 0; i < usersObjects.length; i++) {
-					if (usersObjects[i].doctor) {
-						var $option = $("<option>").text(usersObjects[i].username);
-						$option.attr("value", usersObjects[i]._id); // сохраняю _id врача в value на будущее
-						$selDoctor.append($option);
-					}
+			$linkAdd.on("click", function() {
+				if (confirm("Вы действительно хотите создать запись?")) {
+					$.ajax({
+						url: "appoint/",
+						type: "POST",
+						data: {date: $inpDate.val()}
+					}).done(function(responde) {
+						alert("Вы успешно создали запись на прием!");
+						$inpDate.val("");
+					}).fail(function(jqXHR, textStatus, error) {
+						alert("Произошла ошибка: " + error);
+					})
 				}
-
-				$selDoctor.change(function() {
-					if ($(this).val() != 0) {
-						// заполняем список с приемами
-						$.getJSON("/appoint.json", function (appoObjects) {
-							var i;
-							for (i = 0; i < appoObjects.length; i++) {
-								if ((appoObjects[i].doctor === $selDoctor.val()) 	// если у записи выбранный врач
-								&& (appoObjects[i].patient == "") 					// если нет пациента
-								&& (appoObjects[i].date > new Date()))  {			// если дата больше текущей
-									var $option = $("<option>").text(appoObjects[i].date);
-									$option.attr("value", appoObjects[i]._id); // сохраняю _id записи в value на будущее
-									$selDate.append($option);
-								}
-							}
-							if ($selDate.length >= 2) {
-								$selDate.prop("disabled", false);
-								//$btAdd.prop("disabled", false);
-								$btAdd.attr("class", "");
-							} else {
-								alert("Приемов у этого врача не найдено");
-								$selDate.prop("disabled", true);
-								$btAdd.attr("class", "disabled");
-							}
-						});
-					}
-				});
-				
-
-				$btAdd.on("click", function() {
-					if (confirm("Вы действительно хотите записаться на прием?")) {
-						$.ajax({
-							url: "appoint/" + selDate.val(),
-							type: "PUT"
-						}).done(function(responde) {
-							alert("Вы успешно записались на прием!");
-							$(".tabs a:nth-child(2) span").trigger("click");		
-						}).fail(function(jqXHR, textStatus, error) {
-							alert("Ошибка!\n" + jqXHR.status);
-						})
-					}
-				});
-
-				$content.append($selDoctor, $selDate, $btAdd);
-				callback(null, $content);
-
-			}).fail(function(jqXHR,textStatus, error) {
-				callback(error, null);
 			});
 
-			
+			$content.append($inpDate, $linkAdd);
+
+			callback(null, $content);
 		}
 	});
 

@@ -35,16 +35,18 @@ main {
 }
 
 .content input {
-	width: 85%;
-	height: 36px;
-	margin: 10px;
+	float: left;
+	width: 300px;
+	height: 30px;
+	margin-right: 10px;
+	margin: 0px;
 	font-family: Jura;
 	text-align: justify;
 	font-size:  24px;
-	box-shadow: 0 0 0 10px #2cc0d3;
+	box-shadow: none;
 }
 
-.addAppo {
+.addAppo, .newAppo {
 	background: #2cc0d3;
 	height: 30px;
 	width: 730px;
@@ -58,7 +60,7 @@ main {
 	margin-right: 10px;
 }
 
-.addAppo a {
+.addAppo a, .newAppo a {
 	float: left;
 	width: 100px;
 	height: 22px;
@@ -74,6 +76,13 @@ main {
     color: #999;
 }
 
+.newAppo a {
+	width: 135px;
+}
+
+.newAppo input {
+	margin-right: 10px;
+}
 /*
 .content button {
 	height: 40px;

@@ -49,10 +49,10 @@ var liaWithDeleteOnClick = function (user, callback) {
 					type: "PUT",
 					data: { "doctor": false }
 				}).done(function (responde) {
-					$.getJSON("appoint.json", function(appoObjects) {
+					$.getJSON("/appoint.json", function(appoObjects) {
 						var i;
 						for (i = 0; i < appoObjects.length; i++) {
-							if ((appoObjects[i].doctor === user._id) && (appoObjects[i].date >= new Date())) {
+							if ((appoObjects[i].doctor === user._id) && (new Date(appoObjects[i].date) >= new Date())) {
 								$.ajax({
 									url: "appoint/" + appoObjects[i]._id,
 									type: "DELETE"
