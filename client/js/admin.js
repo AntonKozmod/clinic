@@ -17,7 +17,7 @@ var liaWithDeleteOnClick = function (user, callback) {
 			return false;
 		}
 	});
-	$usersListItem.append($usersRemoveLink);
+	if (!user.doctor) $usersListItem.append($usersRemoveLink);
 
 	if (!user.doctor) {
 		var $toTheDoctorLink = $("<a>").attr("href", "#");
@@ -49,11 +49,27 @@ var liaWithDeleteOnClick = function (user, callback) {
 					type: "PUT",
 					data: { "doctor": false }
 				}).done(function (responde) {
-					callback();
+					$.getJSON("appoint.json", function(appoObjects) {
+						var i;
+						for (i = 0; i < appoObjects.length; i++) {
+							if ((appoObjects[i].doctor === user._id) && (appoObjects[i].date >= new Date())) {
+								$.ajax({
+									url: "appoint/" + appoObjects[i]._id,
+									type: "DELETE"
+								}).fail(function(err) {
+									console.log("Ошибка в удалении appoint: " + err);
+								});
+							}
+						}
+						callback();
+					}).fail(function (err) {
+						console.log("Ошибка в getJSON(appoint.json): " + err);
+					});
 				}).fail(function (err) {
 					console.log("error! " + err);
 				});
 				return false;
+
 			}
 		});
 		$usersListItem.append($toTheDoctorLink);
