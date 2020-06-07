@@ -25,7 +25,7 @@ AppoController.index = function (req, res) {
 				if (result[0].doctor)
 					respondWithAppo({"doctor": result[0]._id});
 				else
-					respondWithAppo({"owner": result[0]._id});
+					respondWithAppo({"patient": result[0]._id});
 			}
 		});	
 	} else {

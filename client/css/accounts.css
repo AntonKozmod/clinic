@@ -104,3 +104,9 @@ main {
 	color: white;
 	text-decoration: none;
 }
+header nav {
+	float: right;
+	width: 300px;
+	padding-top: 25px;
+	padding-right: 40px;
+}
