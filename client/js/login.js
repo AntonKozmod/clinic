@@ -1,6 +1,7 @@
 var main = function () {
 	"use strict";
-	$(".submit").on("click", function() {
+
+	function loginfunc() {
 		var login = $('#login_window .form_request input[name="login"]').val();
 		var password = $('#login_window .form_request input[name="password"]').val();
 		if (login !== null && login.trim() !== "") {
@@ -18,7 +19,18 @@ var main = function () {
 				$('#login_window .form_request input[name="password"]').val("");
 			});
 		}
+	}
+
+	$(".submit").on("click", function() {
+		loginfunc()
 	});
+
+	$('input[name="password"]').on('keydown', function(e) {
+		if (e.which === 13) {
+			loginfunc();
+		}
+	});
+
 	console.log("login.js выполнен");
 }
 

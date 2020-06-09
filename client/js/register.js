@@ -1,6 +1,7 @@
 var main = function () {
 	"use strict";
-	$(".submit_register").on("click", function() {
+
+	function registerfunc() {
 		var full_name = $('#register_window input[name="full_name"]').val(),
 			date = $('#register_window input[name="date"]').val(),
 			tel = $('#register_window input[name="tel"]').val(),
@@ -34,6 +35,16 @@ var main = function () {
 					}
 				});
 			}
+		}
+	}
+
+	$(".submit_register").on("click", function() {
+		registerfunc();
+	});
+
+	$('input[name="repeat_password"]').on('keydown', function(e) {
+		if (e.which === 13) {
+			registerfunc();
 		}
 	});
 }
