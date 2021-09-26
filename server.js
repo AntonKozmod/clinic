@@ -8,8 +8,9 @@ var express = require("express"),
 app.use('/',express.static(__dirname + "/client"));
 //app.use('/users/:id',express.static(__dirname + "/client"));
 
+let port = 3000;
 // Это модель Mongoose для задач
-http.createServer(app).listen(3000);
+http.createServer(app).listen(port);
 // командуем Express принять поступающие
 // объекты JSON
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +20,7 @@ mongoose.connect('mongodb://localhost/clinic', {
 		useCreateIndex: true,
 		useUnifiedTopology: true 
 	}).then(res => {
-		console.log("DB Connected!")
+		console.log("DB Connected!\nPORT: "+port)
 	}).catch(err => {
 		console.log(Error, err.message);
 	});
